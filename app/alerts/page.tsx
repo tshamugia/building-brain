@@ -125,23 +125,23 @@ export default function AlertsPage() {
   }
 
   return (
-    <div className="p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
+    <div className="p-4 sm:p-6 lg:p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 sm:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Alerts</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Alerts</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             System notifications and anomaly detections
           </p>
         </div>
-        <Button onClick={loadAlerts}>
+        <Button onClick={loadAlerts} className="min-h-[44px] w-full sm:w-auto">
           <Activity className="w-4 h-4 mr-2" />
           Refresh
         </Button>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8">
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
@@ -189,69 +189,79 @@ export default function AlertsPage() {
       {/* Filters and Search */}
       <Card className="mb-6">
         <CardContent className="pt-6">
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="space-y-4">
             {/* Search */}
-            <div className="flex-1 relative">
+            <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search alerts..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 min-h-[44px]"
               />
             </div>
 
             {/* Status Filter */}
-            <div className="flex gap-2">
-              <Button
-                variant={filter === 'all' ? 'default' : 'outline'}
-                onClick={() => setFilter('all')}
-                size="sm"
-              >
-                All
-              </Button>
-              <Button
-                variant={filter === 'unacknowledged' ? 'default' : 'outline'}
-                onClick={() => setFilter('unacknowledged')}
-                size="sm"
-              >
-                Unacknowledged
-              </Button>
-              <Button
-                variant={filter === 'acknowledged' ? 'default' : 'outline'}
-                onClick={() => setFilter('acknowledged')}
-                size="sm"
-              >
-                Acknowledged
-              </Button>
+            <div>
+              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase">Status</p>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  variant={filter === 'all' ? 'default' : 'outline'}
+                  onClick={() => setFilter('all')}
+                  size="sm"
+                  className="min-h-[40px]"
+                >
+                  All
+                </Button>
+                <Button
+                  variant={filter === 'unacknowledged' ? 'default' : 'outline'}
+                  onClick={() => setFilter('unacknowledged')}
+                  size="sm"
+                  className="min-h-[40px]"
+                >
+                  Unacknowledged
+                </Button>
+                <Button
+                  variant={filter === 'acknowledged' ? 'default' : 'outline'}
+                  onClick={() => setFilter('acknowledged')}
+                  size="sm"
+                  className="min-h-[40px]"
+                >
+                  Acknowledged
+                </Button>
+              </div>
             </div>
 
             {/* Severity Filter */}
-            <div className="flex gap-2">
-              <Button
-                variant={severityFilter === 'all' ? 'default' : 'outline'}
-                onClick={() => setSeverityFilter('all')}
-                size="sm"
-              >
-                All Severity
-              </Button>
-              <Button
-                variant={severityFilter === 'critical' ? 'default' : 'outline'}
-                onClick={() => setSeverityFilter('critical')}
-                size="sm"
-                className="border-red-600 text-red-600 hover:bg-red-50"
-              >
-                Critical
-              </Button>
-              <Button
-                variant={severityFilter === 'warning' ? 'default' : 'outline'}
-                onClick={() => setSeverityFilter('warning')}
-                size="sm"
-                className="border-yellow-600 text-yellow-600 hover:bg-yellow-50"
-              >
-                Warning
-              </Button>
+            <div>
+              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase">Severity</p>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  variant={severityFilter === 'all' ? 'default' : 'outline'}
+                  onClick={() => setSeverityFilter('all')}
+                  size="sm"
+                  className="min-h-[40px]"
+                >
+                  All
+                </Button>
+                <Button
+                  variant={severityFilter === 'critical' ? 'default' : 'outline'}
+                  onClick={() => setSeverityFilter('critical')}
+                  size="sm"
+                  className="border-red-600 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 min-h-[40px]"
+                >
+                  Critical
+                </Button>
+                <Button
+                  variant={severityFilter === 'warning' ? 'default' : 'outline'}
+                  onClick={() => setSeverityFilter('warning')}
+                  size="sm"
+                  className="border-yellow-600 text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 min-h-[40px]"
+                >
+                  Warning
+                </Button>
+              </div>
             </div>
           </div>
         </CardContent>
@@ -284,18 +294,18 @@ export default function AlertsPage() {
               }`}
             >
               <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   {/* Icon */}
-                  <div className={`p-3 rounded-lg ${getSeverityColor(alert.severity)}`}>
+                  <div className={`p-2 sm:p-3 rounded-lg ${getSeverityColor(alert.severity)} flex-shrink-0`}>
                     {getSeverityIcon(alert.severity)}
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <div>
-                        <div className="flex items-center gap-3 mb-1">
-                          <h3 className="font-semibold text-lg text-gray-900 dark:text-white">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-2">
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1">
+                          <h3 className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white break-words">
                             {alert.title}
                           </h3>
                           <Badge className={getSeverityColor(alert.severity)}>
@@ -313,6 +323,7 @@ export default function AlertsPage() {
                           onClick={() => acknowledgeAlert(alert.id)}
                           size="sm"
                           variant="outline"
+                          className="min-h-[40px] w-full sm:w-auto"
                         >
                           <CheckCircle2 className="h-4 w-4 mr-2" />
                           Acknowledge

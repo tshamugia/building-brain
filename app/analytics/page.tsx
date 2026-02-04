@@ -79,11 +79,11 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
+    <div className="p-4 sm:p-6 lg:p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 sm:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Analytics</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Analytics</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Detailed insights and trends for your building systems
           </p>
@@ -91,7 +91,7 @@ export default function AnalyticsPage() {
         <select
           value={timeRange}
           onChange={(e) => setTimeRange(e.target.value)}
-          className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+          className="px-4 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px] w-full sm:w-auto"
         >
           <option value="7d">Last 7 days</option>
           <option value="30d">Last 30 days</option>
@@ -101,7 +101,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Summary Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
         <MetricCard
           title="Monthly Energy Cost"
           value="$9,380"
@@ -136,14 +136,14 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Energy Trends */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-6">
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Energy consumption trend</CardTitle>
             <CardDescription>30-day historical data with baseline comparison</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={350}>
+            <ResponsiveContainer width="100%" height={280} className="sm:!h-[350px]">
               <ComposedChart data={energyTrend}>
                 <defs>
                   <linearGradient id="colorConsumption" x1="0" y1="0" x2="0" y2="1">
@@ -230,14 +230,14 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Water Usage and Peak Load */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <Card>
           <CardHeader>
             <CardTitle>Water consumption trend</CardTitle>
             <CardDescription>Cold and hot water usage over 30 days</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={240} className="sm:!h-[300px]">
               <AreaChart data={waterTrend}>
                 <defs>
                   <linearGradient id="colorCold" x1="0" y1="0" x2="0" y2="1">
@@ -291,7 +291,7 @@ export default function AnalyticsPage() {
             <CardDescription>Average hourly load distribution</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={240} className="sm:!h-[300px]">
               <AreaChart data={peakHours}>
                 <defs>
                   <linearGradient id="colorLoad" x1="0" y1="0" x2="0" y2="1">
@@ -321,7 +321,7 @@ export default function AnalyticsPage() {
                 />
               </AreaChart>
             </ResponsiveContainer>
-            <div className="mt-4 grid grid-cols-2 gap-4">
+            <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4">
               <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                 <p className="text-xs text-gray-600 dark:text-gray-400">Peak Time</p>
                 <p className="text-lg font-bold text-gray-900 dark:text-white">2:00 PM</p>

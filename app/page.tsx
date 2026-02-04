@@ -142,30 +142,31 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
+    <div className="p-4 sm:p-6 lg:p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 sm:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Welcome back! Here's what's happening with your building.
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <select className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <select className="px-4 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px]">
             <option>Last 7 days</option>
             <option>Last 30 days</option>
             <option>Last 90 days</option>
           </select>
-          <Button onClick={runAnalysis} disabled={analyzing}>
+          <Button onClick={runAnalysis} disabled={analyzing} className="min-h-[44px]">
             <RefreshCw className={`w-4 h-4 mr-2 ${analyzing ? 'animate-spin' : ''}`} />
-            {analyzing ? 'Analyzing...' : 'Run AI Analysis'}
+            <span className="hidden sm:inline">{analyzing ? 'Analyzing...' : 'Run AI Analysis'}</span>
+            <span className="sm:hidden">{analyzing ? 'Analyzing...' : 'Analyze'}</span>
           </Button>
         </div>
       </div>
 
       {/* Metric Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
         <MetricCard
           title="Total Energy"
           value={`${stats?.energyConsumption.today.toFixed(0) || 0} kWh`}
@@ -200,7 +201,7 @@ export default function Dashboard() {
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-6">
         {/* Energy Consumption Chart */}
         <Card className="lg:col-span-2">
           <CardHeader>
@@ -232,7 +233,7 @@ export default function Dashboard() {
                 <span className="text-sm text-gray-500">vs last period</span>
               </div>
             </div>
-            <ResponsiveContainer width="100%" height={280}>
+            <ResponsiveContainer width="100%" height={240} className="sm:!h-[280px]">
               <BarChart data={energyData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
                 <XAxis
@@ -261,7 +262,7 @@ export default function Dashboard() {
             <CardDescription>Distribution across zones</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={280}>
+            <ResponsiveContainer width="100%" height={240} className="sm:!h-[280px]">
               <PieChart>
                 <Pie
                   data={zoneDistribution}
@@ -295,7 +296,7 @@ export default function Dashboard() {
       </div>
 
       {/* Floor Comparison and Recent Activity */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Floor Comparison */}
         <Card>
           <CardHeader>
@@ -303,7 +304,7 @@ export default function Dashboard() {
             <CardDescription>Energy and water usage by floor</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={240} className="sm:!h-[300px]">
               <BarChart data={floorComparison}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
                 <XAxis
@@ -341,11 +342,11 @@ export default function Dashboard() {
                 <p>No alerts. Run analysis to detect issues.</p>
               </div>
             ) : (
-              <div className="space-y-3 max-h-[300px] overflow-y-auto">
+              <div className="space-y-3 max-h-[400px] sm:max-h-[300px] overflow-y-auto">
                 {alerts.slice(0, 5).map((alert) => (
                   <div
                     key={alert.id}
-                    className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                    className="flex items-start gap-2 sm:gap-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                   >
                     <div className={`p-2 rounded-lg ${
                       alert.severity === 'critical' ? 'bg-red-100 text-red-600' :
@@ -355,8 +356,8 @@ export default function Dashboard() {
                       <AlertTriangle className="h-4 w-4" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-2">
-                        <h4 className="font-semibold text-sm text-gray-900 dark:text-white">{alert.title}</h4>
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                        <h4 className="font-semibold text-sm text-gray-900 dark:text-white break-words">{alert.title}</h4>
                         <Badge variant={getSeverityColor(alert.severity) as any} className="shrink-0">
                           {alert.severity}
                         </Badge>

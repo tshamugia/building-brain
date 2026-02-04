@@ -6,16 +6,16 @@ import { Settings, Bell, User, Lock, Database, Palette } from 'lucide-react';
 
 export default function SettingsPage() {
   return (
-    <div className="p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
+    <div className="p-4 sm:p-6 lg:p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Settings</h1>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Settings</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
           Manage your application preferences and configuration
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* General Settings */}
         <Card>
           <CardHeader>
@@ -37,20 +37,20 @@ export default function SettingsPage() {
               <input
                 type="text"
                 defaultValue="Demo Business Center"
-                className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                className="mt-1 w-full px-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px]"
               />
             </div>
             <div>
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Timezone
               </label>
-              <select className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+              <select className="mt-1 w-full px-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px]">
                 <option>UTC-5 (Eastern Time)</option>
                 <option>UTC-8 (Pacific Time)</option>
                 <option>UTC+0 (GMT)</option>
               </select>
             </div>
-            <Button className="w-full">Save Changes</Button>
+            <Button className="w-full min-h-[44px]">Save Changes</Button>
           </CardContent>
         </Card>
 
@@ -75,7 +75,7 @@ export default function SettingsPage() {
                 </p>
                 <p className="text-xs text-gray-500">Immediate notifications for critical issues</p>
               </div>
-              <input type="checkbox" defaultChecked className="h-5 w-5" />
+              <input type="checkbox" defaultChecked className="h-5 w-5 min-w-[20px] min-h-[20px] cursor-pointer flex-shrink-0" />
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -84,7 +84,7 @@ export default function SettingsPage() {
                 </p>
                 <p className="text-xs text-gray-500">Notifications for warning-level events</p>
               </div>
-              <input type="checkbox" defaultChecked className="h-5 w-5" />
+              <input type="checkbox" defaultChecked className="h-5 w-5 min-w-[20px] min-h-[20px] cursor-pointer flex-shrink-0" />
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -93,9 +93,9 @@ export default function SettingsPage() {
                 </p>
                 <p className="text-xs text-gray-500">Daily summary of system status</p>
               </div>
-              <input type="checkbox" className="h-5 w-5" />
+              <input type="checkbox" className="h-5 w-5 min-w-[20px] min-h-[20px] cursor-pointer flex-shrink-0" />
             </div>
-            <Button className="w-full">Update Preferences</Button>
+            <Button className="w-full min-h-[44px]">Update Preferences</Button>
           </CardContent>
         </Card>
 
@@ -120,7 +120,7 @@ export default function SettingsPage() {
               <input
                 type="text"
                 defaultValue="Facility Manager"
-                className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                className="mt-1 w-full px-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px]"
               />
             </div>
             <div>
@@ -130,10 +130,10 @@ export default function SettingsPage() {
               <input
                 type="email"
                 defaultValue="manager@example.com"
-                className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                className="mt-1 w-full px-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px]"
               />
             </div>
-            <Button className="w-full">Update Profile</Button>
+            <Button className="w-full min-h-[44px]">Update Profile</Button>
           </CardContent>
         </Card>
 
@@ -158,7 +158,7 @@ export default function SettingsPage() {
               <input
                 type="password"
                 placeholder="sk-ant-..."
-                className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                className="mt-1 w-full px-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px]"
               />
               <p className="text-xs text-gray-500 mt-1">
                 Add your API key in .env.local file
@@ -168,14 +168,14 @@ export default function SettingsPage() {
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Analysis Frequency
               </label>
-              <select className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+              <select className="mt-1 w-full px-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white min-h-[44px]">
                 <option>Manual only</option>
                 <option>Every hour</option>
                 <option>Every 6 hours</option>
                 <option>Daily</option>
               </select>
             </div>
-            <Button className="w-full">Save Configuration</Button>
+            <Button className="w-full min-h-[44px]">Save Configuration</Button>
           </CardContent>
         </Card>
       </div>

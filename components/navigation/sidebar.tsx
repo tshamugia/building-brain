@@ -44,7 +44,8 @@ export function Sidebar() {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700"
+        className="lg:hidden fixed top-4 left-4 z-50 p-3 rounded-lg bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 min-w-[48px] min-h-[48px] flex items-center justify-center active:scale-95 transition-transform"
+        aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
       >
         {mobileMenuOpen ? (
           <X className="h-6 w-6 text-gray-900 dark:text-white" />
@@ -91,14 +92,14 @@ export function Sidebar() {
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`
-                  flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors
+                  flex items-center px-3 py-3 text-base lg:text-sm font-medium rounded-lg transition-colors min-h-[48px]
                   ${isActive
                     ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-98'
                   }
                 `}
               >
-                <Icon className="h-5 w-5 mr-3" />
+                <Icon className="h-5 w-5 mr-3 flex-shrink-0" />
                 {item.name}
               </Link>
             );
@@ -115,9 +116,9 @@ export function Sidebar() {
                 key={item.name}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center px-3 py-2.5 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="flex items-center px-3 py-3 text-base lg:text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-h-[48px]"
               >
-                <Icon className="h-5 w-5 mr-3" />
+                <Icon className="h-5 w-5 mr-3 flex-shrink-0" />
                 {item.name}
               </Link>
             );
@@ -126,7 +127,7 @@ export function Sidebar() {
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
-            className="flex items-center w-full px-3 py-2.5 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="flex items-center w-full px-3 py-3 text-base lg:text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-h-[48px]"
           >
             {darkMode ? (
               <>
@@ -143,11 +144,11 @@ export function Sidebar() {
 
           {/* User Info */}
           <div className="flex items-center px-3 py-3 mt-2 rounded-lg bg-gray-50 dark:bg-gray-800">
-            <div className="flex items-center justify-center h-8 w-8 rounded-full bg-blue-600 text-white text-sm font-medium">
+            <div className="flex items-center justify-center h-10 w-10 rounded-full bg-blue-600 text-white text-sm font-medium flex-shrink-0">
               FM
             </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-gray-900 dark:text-white">Facility Manager</p>
+            <div className="ml-3 min-w-0">
+              <p className="text-sm font-medium text-gray-900 dark:text-white truncate">Facility Manager</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">Admin</p>
             </div>
           </div>

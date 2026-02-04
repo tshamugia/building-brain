@@ -37,42 +37,42 @@ export default function BuildingsPage() {
   }
 
   return (
-    <div className="p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
+    <div className="p-4 sm:p-6 lg:p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Building Overview</h1>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Building Overview</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
           Detailed information about your building structure and zones
         </p>
       </div>
 
       {/* Building Info Card */}
-      <Card className="mb-8">
+      <Card className="mb-6 sm:mb-8">
         <CardHeader>
-          <div className="flex items-start justify-between">
-            <div className="flex items-start gap-4">
-              <div className="p-4 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
-                <Building2 className="h-8 w-8 text-blue-600" />
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div className="flex items-start gap-3 sm:gap-4 min-w-0">
+              <div className="p-3 sm:p-4 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex-shrink-0">
+                <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
               </div>
-              <div>
-                <CardTitle className="text-2xl">{building?.name || 'Demo Business Center'}</CardTitle>
-                <CardDescription className="mt-2 flex items-center gap-4">
-                  <span className="flex items-center gap-1">
-                    <MapPin className="h-4 w-4" />
-                    123 Innovation Street, Tech District
+              <div className="min-w-0 flex-1">
+                <CardTitle className="text-xl sm:text-2xl break-words">{building?.name || 'Demo Business Center'}</CardTitle>
+                <CardDescription className="mt-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                  <span className="flex items-center gap-1 text-xs sm:text-sm">
+                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                    <span className="break-words">123 Innovation Street, Tech District</span>
                   </span>
                   <Badge>Active</Badge>
                 </CardDescription>
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Building ID</p>
-              <p className="text-lg font-bold text-gray-900 dark:text-white">{building?.id || 'demo_building_001'}</p>
+            <div className="text-left sm:text-right">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Building ID</p>
+              <p className="text-base sm:text-lg font-bold text-gray-900 dark:text-white break-all">{building?.id || 'demo_building_001'}</p>
             </div>
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400">Total Floors</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
@@ -98,7 +98,7 @@ export default function BuildingsPage() {
       </Card>
 
       {/* Current Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
         <Card className="border-l-4 border-l-yellow-600">
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
@@ -153,8 +153,8 @@ export default function BuildingsPage() {
 
       {/* Floors Overview */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Floor Overview</h2>
-        <div className="space-y-4">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Floor Overview</h2>
+        <div className="space-y-3 sm:space-y-4">
           {building?.floors?.map((floor: any) => (
             <Card key={floor.id}>
               <CardHeader>
@@ -167,11 +167,11 @@ export default function BuildingsPage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
                   {floor.zones?.map((zone: any) => (
                     <div
                       key={zone.id}
-                      className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+                      className="p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer min-h-[80px]"
                     >
                       <p className="font-semibold text-sm text-gray-900 dark:text-white mb-1">
                         {zone.name}

@@ -75,34 +75,34 @@ export default function SuggestionsPage() {
   }
 
   return (
-    <div className="p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
+    <div className="p-4 sm:p-6 lg:p-8 bg-gray-50 dark:bg-gray-950 min-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col gap-4 mb-6 sm:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">AI Suggestions</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">AI Suggestions</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Efficiency opportunities and optimization recommendations
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           <Button
             variant={filter === 'all' ? 'default' : 'outline'}
             onClick={() => setFilter('all')}
-            className="text-sm"
+            className="text-sm min-h-[40px]"
           >
             All
           </Button>
           <Button
             variant={filter === 'high-value' ? 'default' : 'outline'}
             onClick={() => setFilter('high-value')}
-            className="text-sm"
+            className="text-sm min-h-[40px]"
           >
             High Value
           </Button>
           <Button
             variant={filter === 'quick-wins' ? 'default' : 'outline'}
             onClick={() => setFilter('quick-wins')}
-            className="text-sm"
+            className="text-sm min-h-[40px]"
           >
             Quick Wins
           </Button>
@@ -110,7 +110,7 @@ export default function SuggestionsPage() {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
         <Card className="border-l-4 border-l-green-600">
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
@@ -185,21 +185,21 @@ export default function SuggestionsPage() {
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {analyses.map((analysis, idx) => {
             const impact = getImpactBadge(analysis.potentialSavings);
 
             return (
               <Card key={idx} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                    <div className="flex items-start gap-3 sm:gap-4 min-w-0">
+                      <div className="p-2 sm:p-3 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex-shrink-0">
                         {getIconForType(analysis.type)}
                       </div>
-                      <div>
-                        <div className="flex items-center gap-3 mb-2">
-                          <CardTitle className="text-lg">{analysis.summary}</CardTitle>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                          <CardTitle className="text-base sm:text-lg break-words">{analysis.summary}</CardTitle>
                           <Badge className={impact.color}>{impact.label} Impact</Badge>
                           {analysis.confidence && analysis.confidence > 90 && (
                             <Badge variant="outline" className="border-green-600 text-green-600">
@@ -268,9 +268,9 @@ export default function SuggestionsPage() {
       )}
 
       {/* Quick Tips Section */}
-      <div className="mt-8">
+      <div className="mt-6 sm:mt-8">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">General Best Practices</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {[
             {
               icon: <Zap className="h-5 w-5" />,
